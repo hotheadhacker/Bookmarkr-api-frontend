@@ -6,7 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 const Bookmark = () => {
   const [formData, setFormData] = useState({
     url: '',
-    label: ''
+    label: '',
   });
   var msg = '';
 
@@ -17,13 +17,15 @@ const Bookmark = () => {
   </div>`;
   }
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`/bookmark?url=${url}&label=${label}`);
+      const res = await axios.post(
+        `https://bookmarkr-api.herokuapp.com/bookmark?url=${url}&label=${label}`
+      );
       // alert('Bookmark Added');
       function showAlert() {
         msg = `<div class="col-8 mt-1 alert alert-success" role="alert">
@@ -43,7 +45,7 @@ const Bookmark = () => {
     <Fragment>
       <div className='container'>
         <center>
-          <form className='form myForm col-8' onSubmit={e => onSubmit(e)}>
+          <form className='form myForm col-8' onSubmit={(e) => onSubmit(e)}>
             {ReactHtmlParser(msg)}
             <div className='wrapper m-4'>
               <div className='row'>
@@ -53,7 +55,7 @@ const Bookmark = () => {
                   type='url'
                   name='url'
                   value={url}
-                  onChange={e => onChange(e)}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>
@@ -64,7 +66,7 @@ const Bookmark = () => {
                   type='text'
                   name='label'
                   value={label}
-                  onChange={e => onChange(e)}
+                  onChange={(e) => onChange(e)}
                   required
                 />
               </div>

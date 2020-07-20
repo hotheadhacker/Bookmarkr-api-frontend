@@ -8,7 +8,9 @@ const View = () => {
 
   var temp = '';
   async function showBookmarks() {
-    let response = await axios.get('/view-bookmark');
+    let response = await axios.get(
+      'https://bookmarkr-api.herokuapp.com/view-bookmark'
+    );
     var data = await response.data;
     console.log(data.length);
     let i = 0;
