@@ -5,7 +5,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 const View = () => {
   const [HTML, setHTML] = useState('');
-
+  axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   var temp = '';
   async function showBookmarks() {
     let response = await axios.get(
