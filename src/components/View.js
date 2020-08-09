@@ -9,13 +9,7 @@ const View = () => {
   var temp = '';
   async function showBookmarks() {
     let response = await axios.get(
-      'https://bookmarkr-api.herokuapp.com/view-bookmark',
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        },
-      }
+      'https://bookmarkr-api.herokuapp.com/view-bookmark'
     );
     var data = await response.data;
     console.log(data.length);
